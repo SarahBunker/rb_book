@@ -1,0 +1,56 @@
+#########
+A brief history of Ruby
+
+Ruby
+ -created by Yukihir Matsumoto or Matz in mid 1990s
+ - programmer productivity
+ -programming should be function
+ -programming understood by humans first, computers second
+Ruby on Rails
+  - built by David Hansson
+  - got a lot of people excited about Ruby
+  
+#####################33
+Computer Science and Layers of Abstraction
+
+Abstraction
+  - As users wer are far removed from what is happening under the hood
+ex Phone
+  - user deals with interface
+  - phone technician deals with components interacting with subsystem
+  - Software Engineer deals with operating system
+  > different layers of abstraction
+  - abstraction happens in programming languages as well
+    . Ruby is in C, translated to machine language, translated to 0s and 1s
+    . Domain specific Languages like Rails
+    > don't know how they work, but know they exist and can use them.
+
+
+
+#################################3
+Who this book is for
+
+Flow
+  - Shift in thinking that allows you to think deeply and clearly about a problem
+  
+Programming difficult?
+  - requires a certain temperment
+  - perception of the difficulty of a task is inversly proportional to the amount of patience the person attempting the task possess
+  > be patient
+  > allow yourself time to work through the problems
+  
+##################################
+How to read this book
+
+>>> Do the code, don't just read the code
+
+Muscle Memory
+  - large amounts of technical knowledge
+  > helpful to practice certain skills until they become automatic
+  "Learn with your fingers"
+  
+Book avoids teaching rabbit holes
+  > stick to basics in the book
+  
+Anki
+    
