@@ -1,0 +1,19 @@
+##############################33
+Installing Ruby
+
+Checked that I had Ruby greater then 2.5 (
+  ruby -v  >>>> ruby 2.6.3p62......
+  
+##########################33
+Using a code editor
+
+I choose to keep with the editor in cloud 9
+###############################3
+Stylish Ruby
+
+text editor
+  - tab should be set to two spaces
+  - indentingshould be set to use spaces
+  
+# starts comments
+
