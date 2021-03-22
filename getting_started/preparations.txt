@@ -8,6 +8,7 @@ Checked that I had Ruby greater then 2.5 (
 Using a code editor
 
 I choose to keep with the editor in cloud 9
+
 ###############################3
 Stylish Ruby
 
@@ -17,3 +18,113 @@ text editor
   
 # starts comments
 
+snake_case
+  - all methods, variables, file names
+  
+UPPERCASE
+  - constants that will not change in program
+  
+when doing do/end blocks
+  - use {} when the code fits on one line
+  - use do/end when it goes over multiple lines
+  
+CamelCase
+  - also called PascalCase
+  - no spaces capitalize every word
+  - use to define classes
+  
+
+#####################################3
+Reading Documentation
+
+important programmer habit
+  - learn how to read documentation
+
+API
+  - acronym for application programming interface
+  - can mean how applications talk to each other
+  - or can mean the documentation
+  
+--------------------------------------------
+How to read documentation String example
+doc found at "https://ruby-doc.org/core-2.6/String.html"
+
+Three areas of focus
+
+Class name or Module name
+  - found in the top heading
+  - can also be defined with ::
+    .like Active::Base
+    .This means that Base is the Class name or Module
+    .Used to differentiate between classes with the same name but from a different namespace
+    .the Module Active has a class named Base
+    ! the :: at the top of the screen is different then those that are on the side of the screen which defines class methods
+  - rest of the page will be documenting that class or module
+
+Methods
+  - listed with a :: or #
+  - :: < used for class methods
+  - # < used for instance methods
+  ! use in documentation of :: and # completely different then how they are used in the code
+  - clicking on a class or instance method will bring you to a section showing parameters, return values, and some example ruby code
+
+-----------rb----------
+a = "world wide web".split
+puts a 
+
+# .split is a class method from the string class, can be called directly on the string
+
+
+b = String.new("blue")
+puts "string b: #{b}"
+
+String.try_convert("red")
+
+# made a new string with text blue,
+# not sure what .try_convert does yet
+
+----------------------------------
+three most important things to remember when reading documentation
+  - The class or module you are looking at
+  - where to find its available class/instance methods
+  - how to use those methods
+
+----------------------------------------
+Other sections on the documentation page
+--------------------------------------
+Parent
+
+Every subclass comes from parent class
+  - need to know object orientated programming to fully understand
+  - the subclass has access to methods (instance and class) documented in the parent class
+  
+-----------example-----------------
+string parent is object
+  - the methods of objects are also available to strings
+  - use link to learn about parent object if unfamiliar or aren't finding the expected methods
+  
+
+------------------------------------
+Class Module Index
+
+All classes are part of a namespace in Ruby
+  - this section lists other classes and modules from same namespace
+  - those with :: are indicating a namespace
+
+------------------------------------
+Included modules
+
+indicates other modules whose functionality is available to the string class
+
+-----------------
+Comparable module is include
+
+c = "cat".between?("ant","zebra")
+
+puts "Is cat between ant and zebra? #{c}"
+
+# between? is not in string documentation, but under comparable mudule > listed under included modules 
+
+-------------
+when in doubt review documentation for the version you are running
+https://ruby-doc.org/core-2.6.3/
