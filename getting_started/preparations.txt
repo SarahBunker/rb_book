@@ -14,7 +14,7 @@ Stylish Ruby
 
 text editor
   - tab should be set to two spaces
-  - indentingshould be set to use spaces
+  - indenting should be set to use spaces
   
 # starts comments
 
@@ -128,3 +128,107 @@ puts "Is cat between ant and zebra? #{c}"
 -------------
 when in doubt review documentation for the version you are running
 https://ruby-doc.org/core-2.6.3/
+
+###################################
+Command line and irb
+
+----------------
+command line
+  - mkdir
+  - cd
+  - touch
+  - rm
+  - rm -r
+  
+covered making a directory, a file, and removing them invididually or one at a time.
+Also covered changing folders
+
+----------------
+irb
+  - ruby interactive environment that can be run in the command line without creating a separate ruby file
+  - started by typing "irb" in the command line
+  - exited by typing "exit"
+  - defualt prompt shows which version of ruby is running
+  - can type ruby commands and see outputs in the command line interactive environment
+
+--------------
+running ruby code
+  - after creating a code with the .rb extension
+  - run code by typing
+    ruby file_name
+  - code is executed by an interpreter
+    . takes code and translates into something computer will understand
+  - stopping endless loops
+    control - c
+
+----------------
+Remember
+
+there is a difference between running commands command line to manage files and folders,
+running ruby commands in irb,
+and running ruby code from file in command line
+
+####################################
+What are ruby gems?
+
+Ruby "Gems"
+  - RubyGems
+  - gems for short
+  - collection of Ruby files or Ruby libraries that perform a certain tas,
+  - publishing system that organizes listing and publishing those libraries/gems
+  
+rubygems.org
+  - website that powers system for downloading, publishing, and using useful ruby libraries on your system
+  - the libraries are called gems
+  
+Ruby Gems
+  - intergrated into Ruby 1.9 and newer
+  - prepackaged bundle of code to solve a problem.
+  - don't have to reinvent the wheel
+  - gem is cut when new version is available
+  - all public gems hosted at http://rubygems.org
+  - code is usually on github
+  
+How to use
+
+gem command
+  - use with install command
+  
+-------
+gem install <gem name>
+
+  - good for one-time usage
+  - gemfile simple solution for storing gems and dependancies
+    . learn later
+  - for now know that you can install a small ruby gem using gem install <gem name> for course until taught more
+    
+###########################33
+Debuggin with pry
+
+pry
+  - library double for irb
+  - very usefull for debuggin
+  - have to install first
+  
+gem install pry
+
+  - now use pry to enter pry environment
+  - can also use in ruby files
+ 
+ ------------------ 
+require "pry"
+
+a = [1, 2, 3]
+a << 4
+binding.pry     # execution will pause here, allowing you to inspect all objects
+puts a
+--------------
+
+use require "pry" at top
+binding.pry pauses program
+  - pauses and opens a pry session
+  - continue with Ctrl + D
+  - better alternative to puts in your code
+
+
+ANKI

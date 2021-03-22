@@ -18,3 +18,11 @@ c = "cat".between?("ant","zebra")
 puts "Is cat between ant and zebra? #{c}"
 
 # between? is not in string documentation, but under comparable mudule > listed under included modules 
+
+#--------------------------------------
+require "pry"
+
+a = [1, 2, 3]
+a << 4
+binding.pry     # execution will pause here, allowing you to inspect all objects
+puts a
