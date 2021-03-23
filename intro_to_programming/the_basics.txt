@@ -1,10 +1,8 @@
 ##################
-ANKI
 
 Literals
   - any notation that lets you represent a fixed value in source code
   - string, integer, float, boolean, hash, array, symbol, nil
-
 
 #####################
 Strings
@@ -18,7 +16,7 @@ Strings
    
 ##########################
 Symbols
-  - symbols are created by placeing a colon before the word
+  - symbols are created by placing a colon before the word
    * used to reference something you don't plan to print to screen or change
    * often refered to as immutable (not technically correct, but good enough for now)
 
@@ -63,7 +61,7 @@ modulo operator %
 .divmod(num)
   returns array of devision and modulo value
 
-Effect of differenc between modulo and remainder is when working with negative integers in either the first, second or both operators
+Effect of difference between modulo and remainder is when working with negative integers in either the first, second or both operators
   - modulo is only negative if second operator is negative
   - remainder is only negative if the first operator is negative
   
@@ -126,3 +124,4 @@ puts a
 
 nil because a, the return of a print statement is nil
 
+ANKI
