@@ -1,0 +1,61 @@
+what is a variable?
+  - like a container to store information
+  
+Assigning value to variable
+  -try to make sure the variable is accurately discriptive so later you or another person knows what that variable conatains
+
+Getting data from user
+  - gets stands for get string
+  - .chomp to get rid of newline character
+
+Variable scope
+  - defined by where it was initialized or created
+  - defined by a block
+    * block is a piece of code followed by a method invocation
+    * not all do/end pairs imply a block
+  - inner scope can access outer scope, but not vice versa
+  
+! key distinguishing factor to tell if do/end or {} is considered a block (and thereby creates a new scope for variable is if the {} or do/end
+is followed by a method invocation
+  .each
+  .times
+  other methods
+  these create a block and thereby a new scpe
+  
+Types of variables
+5 types of variables
+  - constants
+    * defined by CAPITAL_LETTERS
+      MY_CONSTANT = 'I am available throughout your app.'
+    * store data that never needs to change
+    * Ruby allows you to change these, but shows a warning, still generally shouldn't
+      "warning: previous definition of MY_CONSTANT was here"
+    * cannot be declared in method definitions, avaible throughout all scope.
+    
+  - global variables
+    * defined by starting the variable name with a $
+      $var = "a global string"
+    * avaible throughout app, overides all scope boundaries
+    * generally avoid due to unexpected complications
+    
+  - class variables
+    * declared by starting var name with two @ signs
+      @@instances = 0
+    * accesible by instances of your class
+    * accesible by the class itself
+    * used when you need to declare a variable related to a class but each instance does not need its own value for the variable
+    * must be intialized at the class level outside of method definitions
+    * can be altered by class or instance method definitions
+    
+  - instance variables
+    * declared by starting variable with one @
+      @var = 'I am available throughout the current instance of this class.'
+    * avaible throughout current instance of parent class.
+    * can cross some scope boundaries
+    * will learn in OOP, don't use until then
+    
+  - local variables
+    * most common variables
+    
+ANKI
+
