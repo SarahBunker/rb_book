@@ -1,0 +1,211 @@
+####################################
+What are methods and why do we need them?
+  - reusable piece of code
+  - defined with the word def (this is a reserved word)
+  - next give the method a name
+  - finish the method with the word "end"
+  
+arguements vs parameters
+  - arguement is what you pass into a method
+  - parameter is what you use as a placeholder inside the method
+    *used when you need access to data outside of the methods definition scope
+    
+How do use a method
+  - call, invoke, method invocation all refer to how to use the method
+  - type name and pass any arguements
+
+More about why we need methods
+  - allow us to change in one place things that will affect alot of code
+  
+Default parameters
+  - allows us to structure the method so that it always works whether it was given arguements or not
+  - when typing parameters follow by an equal sign and then the default value
+  
+def say(words='hello')
+  puts words + '.'
+end
+
+optional parenthesis
+  - parenthsis are not required when calling a method
+    say() could be rewritten as just say
+    say("hi"), it could just be say "hi"
+  - can sometimes be confusing
+  
+Methods and scope
+  - methods create separate scope outside of regular scope
+    * this is why outside data has to be passed in as an arguement,
+      and why outside can't access variables created in a method
+
+-----------  
+a = 5
+
+def some_method
+  a = 3
+end
+
+puts a
+
+What is the value of a? 5 because the method created its own scope
+------------
+---------------------------------
+Make sure you don't mix up method invocation with a block and method definition when you're working with local variable scope issues.
+They may look similar at first, but they are not the same. They have different behaviors when it comes to local variable scope.
+--------------------------------
+--------------------------------
+# Method invocation with a block
+
+[1, 2, 3].each do |num|
+  puts num
+end
+
+---------
+
+# Method definition
+
+def print_num(num)
+  puts num
+end
+
+QQQQQQQQQ
+come back to later
+
+################################################################################################
+obj.method or method(obj)
+  - some_method(obj) format allows you to send arguements to a method call
+  - a_caller.some_method(obj) is an explicit caller, some_method modifys the caller
+  - for now memorize which way to use the method
+
+###################################################################################################
+Mutating the caller
+  - permanently change the arguements value
+  - happens when we mutate the caller
+  - exception to the rule that methods can't change the arguements value
+  - How do you know which methods mutate and which don't?
+    * experience or by looking at documentation
+  - Ruby is both a pass-by-value and pass-by-reference
+  
+################################################################################################
+puts vs returns the sequel
+
+.pop ~ method from array class that removes the last element of an array and returns it
+
+Ruby methods ALWAYS return the evaluated result of the last line of the expression unless an explicit return comes before it.
+  - calling return in the middle of a method prevents the rest of the code from running
+  - feature of Ruby is that return is not required.
+  
+#################################################################################################
+Chaining methods
+  -every method call returns something
+  - allows us to chain methods
+
+-------------------
+def add_three(n)
+  n + 3
+end
+
+add_three(5).times { puts 'this should print 8 times'}
+
+   add_three(5) > 8
+   8.times repeats action 8 times
+----------------------
+"hi there".length.to_s      # returns "8" - a String
+---------------------
+
+def add_three(n)
+  puts n + 3
+end
+
+    puts returns nil so the chain is broken
+    ! if anywhere along the chain, there's a nil or an exception is thrown, the entire chained call will break down.
+
+def add_three(n)
+  new_value = n + 3
+  puts new_value
+  new_value
+end
+
+    fix so add_three returns a value not nil so you can keep chaining methods
+    
+############################################33
+Method calls as arguements
+
+  - defining two simple methods
+
+def add(a, b)
+  a + b
+end
+
+def subtract(a, b)
+  a - b
+end
+
+  - you can pass the results of these with arguements to another method
+  
+def multiply(num1, num2)
+  num1 * num2
+end
+
+multiply(add(20, 45), subtract(80, 10))
+=> 4550
+# returns 4550
+
+  - can get even more complex with adds nested inside of adds
+  
+add(subtract(80, 10), multiply(subtract(20, 6), add(30, 5)))
+=> 560
+
+  - use parentheses when nesting methods to avoid confusion
+  - vital to know what methods are returning because that is what we pass to other method calls
+  
+#############################################################################################
+The call stack
+
+call stack or stack
+  - works like a stack of books.
+  - keeps track of what method is executing and where execution should return when it resolves
+  - call stack puts the information from the current method on top of the stack and then removes that information when the method returns
+  - blocks, procs, and lambdas also use the stack
+  - or like a todo list of methods that are called
+  - list of methods that have been started but haven't finished yet
+  - includes information of where in the code to return to
+  - last in, first out
+  - when the function returns its information is removed (popped) off
+  
+stack frame contents (java has functions which are like Ruby methods)
+  - the function that was invoked
+  - the parameters passed to function
+  - the current line number
+
+p was used instead of puts
+p is another print statement that returns the value it prints
+
+
+#####################333
+exercises in irb
+
+problem 2
+What do the following expressions evaluate to?
+
+1. x = 2    # => 2
+
+2. puts x = 2    # => nil
+
+3. p name = "Joe"    # => "Joe"
+
+4. four = "four"    # => "four"
+
+5. print something = "nothing"    # => nil
+
+-----------------------------------------
+
+problem 6
+What does the following error message tell you?
+
+ArgumentError: wrong number of arguments (1 for 2)
+  from (irb):1:in `calculate_product'
+  from (irb):4
+  from /Users/username/.rvm/rubies/ruby-2.5.3/bin/irb:12:in `<main>'
+  
+you didn't give the method the correct number of arguements, calculate_product requires two arguements but you only provided one.
+
+ANKI
