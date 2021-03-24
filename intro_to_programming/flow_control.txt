@@ -1,0 +1,141 @@
+Conditionals
+  - fork in the road
+  - formed using combination of if statements and comparison logical operators
+  - if else elsif end are reserved words
+  
+!!!!!! flash cards
+# Example 4: must use "then" keyword when using 1-line syntax
+if x == 3 then puts "x is 3" end
+
+# Ruby allows you to append the if condition at the very end.
+puts "x is 3" if x == 3
+
+# one line unless statements
+puts "x is NOT 3" unless x == 3
+
+##################################################################
+Comparisons
+
+operands
+  - stuff to the left and right of the operator
+  
+== is equal to operator
+  - values must have the same type to be equal
+  - capitalization matters
+  
+irb :005 > 'abc' == 'aBc'
+=> false
+
+irb :008 > '5' == 5
+=> false
+
+!= not equal to
+< less then
+> greater then
+  - when comparing strings the comparison is character by character
+  - the first character that is different is compared
+  - if strings are equal up to the length of the shorter string the shorter string is less then the longer string
+  - can't use >,<,<=,>= with different types
+  
+irb :005 > "42" < "402"
+=> false
+
+irb :007 > "42" < "420"
+=> true
+
+irb :008 > "42" < 420
+ArgumentError (comparison of String with 420 failed)
+
+#############################
+Combining expressions
+
+&& and operator
+|| or operator
+!  not operator
+  - can do it outside of paranthesis
+
+irb :001 > !(4 == 4)
+=> false
+
+Order of precedence from highest to lowest (first to last)
+1. <=, <, >, >= - Comparison
+2. ==, != - Equality
+3. && - Logical AND
+4. || - Logical OR
+
+#################################
+Ternary Operator
+  - if else statement on one line
+  - expression ? do this if true : do this if false
+
+irb :001 > true ? "this is true" : "this is not true"
+=> "this is true"
+
+#################################
+Case Statement
+  - similar to if
+  - uses reserved words [case,when,else,end]
+  - define a case
+  - what operation to complete if that case is true
+  
+  - only need to specify the variable we are checking once
+    * arguement to case
+  - can save the result of a case statement to a variable.
+    * in the example this meant writing puts only once instead of on each line
+  - can also write a case without providing case an arguement
+    * very similar to an if elsif else end statement
+    * requires testing each value
+----------------------------------   
+# basic if statment for comparison
+# if_statement.rb
+
+a = 5
+
+if a == 5
+  puts "a is 5"
+elsif a == 6
+  puts "a is 6"
+else
+  puts "a is neither 5, nor 6"
+end
+--------------------------------
+# basic case statment
+a = 5
+
+case a
+when 5
+  puts "a is 5"
+when 6
+  puts "a is 6"
+else
+  puts "a is neither 5, nor 6"
+end
+----------------------------------
+# saving result of case to a variable
+a = 5
+
+answer = case a
+  when 5
+    "a is 5"
+  when 6
+    "a is 6"
+  else
+    "a is neither 5, nor 6"
+  end
+
+puts answer
+-----------------------------------
+case without an arguement
+a = 5
+
+case
+when a == 5
+  puts "a is 5"
+when a == 6
+  puts "a is 6"
+else
+  puts "a is neither 5, nor 6"
+end
+
+##############################################################
+True and False
