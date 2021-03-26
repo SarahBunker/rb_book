@@ -1,0 +1,16 @@
+Simplest loop
+  - loop takes a block
+  - excutes code within block until
+    * manually press ctrl+c
+    * insert a break statement inside block
+    
+remember a block is code within do...end or {}
+
+loop do
+  puts "This will keep printing until you hit Ctrl + c"
+end
+
+Adding in breaks
+  - to avoid an infinite loop add a break statement
+  - doesn't close program just exits loop
+  
