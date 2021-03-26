@@ -11,9 +11,4 @@ end
 
 puts answer
 
-b = ""
-if b
-  puts "True, but, how can this be true?"
-else
-  puts "it is not true"
-end
+#ANKI

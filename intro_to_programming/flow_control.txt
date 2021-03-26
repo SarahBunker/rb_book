@@ -139,3 +139,13 @@ end
 
 ##############################################################
 True and False
+  - every expression evaluates to true when used in flow control except false and nil
+  
+  if x = 5
+  puts "how can this be true?"
+else
+  puts "it is not true"
+end
+
+
+ANKI
