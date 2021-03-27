@@ -14,3 +14,115 @@ Adding in breaks
   - to avoid an infinite loop add a break statement
   - doesn't close program just exits loop
   
+Next in loops
+  if i == 4
+    next        # skip rest of the code in this iteration
+  end
+  
+A while loop is given a parameter that evaluates to a boolean (remember, that's just true or false).
+Once that boolean expression becomes false, the while loop is not executed again, and the program continues after the while loop.
+
+while x >= 0
+  puts x
+  x = x - 1
+end
+
+the code within the loop must modify the variable x in some way. If it does not, then x >= 0 will always evaluate to true and
+cause an infinite loop
+
+The until loop is simply the opposite of the while loop.
+
+until x < 0
+  puts x
+  x -= 1
+end
+
+
+
+A do/while loop works in a similar way to a while loop; one important difference is that the code within the loop gets executed
+one time, prior to the conditional check to see if the code should be executed
+Classic case for Do/while
+  do action again if user types yes
+  
+# perform_again.rb
+
+loop do
+  puts "Do you want to do that again?"
+  answer = gets.chomp
+  if answer != 'Y'
+    break
+  end
+end
+
+the condition to break out of the loop occurs at the end, therefore ensuring that the loop executes at least once
+no actual while statement in a do/while
+
+also another construct in Ruby that supports "do/while" loops, like this:
+begin
+  puts "Do you want to do that again?"
+  answer = gets.chomp
+end while answer == 'Y'
+While the above works, it's not recommended by Matz, the creator of Ruby.
+
+#############################
+For loops
+`loop over a collection of elements.
+`for loops have a definite end since it's looping over a finite number of elements. > no infinite loop
+`odd thing about the for loop is that the loop returns the collection of elements after it executes,
+whereas the earlier while loop examples return nil
+
+A range is a special type in Ruby that captures a range of elements.
+  - For example 1..3 is a range that captures the integers 1, 2, and 3.
+
+can do it with ranges and arrays
+
+x = gets.chomp.to_i
+for i in 1..x do
+  puts i
+end
+puts "Done!"
+
+x = [1, 2, 3, 4, 5]
+for i in x do
+  puts i
+end
+puts "Done!"
+
+Most Rubyists prefer iterators
+
+
+########################################################33
+Conditionals within loops
+
+odd?  ~ method to decide if the current variable in the loop is odd.
+
+####################################
+Iterators
+
+Iterators are methods that naturally loop over a given set of data and allow you to operate on each element in the collection.
+
+.each
+
+named the variable name and placed it in between two pipes |
+
+------------------------------------
+add counter to create a numbered list output
+names = ['Bob', 'Joe', 'Steve', 'Janice', 'Susan', 'Helen']
+x = 1
+
+names.each do |name|
+  puts "#{x}. #{name}"
+  x += 1
+end
+
+##############
+Recursion
+
+calling a method within itself.
+
+The key concept with recursion is that there is some baseline condition that returns a value, which then "unwinds" the recursive calls
+the successive recursive calls building up, until some value is returned, and only then can the recursive calls be evaluated.
+
+see recursion.rb for two examples
+
+ANKI
