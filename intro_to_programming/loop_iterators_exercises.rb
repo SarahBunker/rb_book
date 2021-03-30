@@ -81,7 +81,7 @@ count_to_zero(10)
 # mine is bulkier because it needed two inputs
 
 =begin
-ANKI questions to add later
+ANKI questions to add later, added
 Where does the iteration of the counter generally occur in a recursive model?
 in the parenthesis of the call to the method from within the method.
 
@@ -93,3 +93,5 @@ def doubler(start)
 end
 
 =end
+#ANKI
+#sarah is really cute

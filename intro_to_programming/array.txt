@@ -1,0 +1,154 @@
+Array
+  is an ordered list of elements
+  of any type, including mixing types
+  defined with brackets
+  items separated by commas
+  
+.first ~ method to see first value of array
+.last ~ method to see last value of array
+
+  arrays indexed starting at 0
+  
+Modifying Arrays
+.pop ~ modifies by removing last element, returns last element
+  method that mutates caler
+.push ~ add item to end of array
+<<      same as push, shovel operator
+  .pop, .push, and << mutate the caller
+  
+.map ~ iterates over array, returns new array with those results
+.collect ~ allias to map, does the same thing
+
+ a = [1, 2, 3, 4]
+ => [1, 2, 3, 4]
+ a.map { |num| num**2 }
+ => [1, 4, 9, 16]
+ a.collect { |num| num**2 }
+ => [1, 4, 9, 16]
+ a
+ [1, 2, 3, 4]
+ 
+.map and .collect don't mutate the caller, array stays the same
+  how do you know which do and don't?
+    memorize/know through using
+    
+.delete_at(index_to_be_deleted)
+  destructive, modifies the array
+  returns value deleted
+  
+a = [1, 2, 3, 4]
+a.delete_at(1)
+a
+=> [1, 3, 4]
+
+.delete("value to delete")
+  ~ deletes all instances of provided value
+  returns value deleted
+  
+my_pets = ["cat", "dog", "bird", "cat", "snake"]
+my_pets.delete("cat")
+=> "cat"
+my_pets
+=> ["dog", "bird", "snake"]
+
+.uniq ~ iterates through an array, deletes any duplicate values that exist, then returns the result as a new array.
+  does not mutate the caller
+  returns new array
+  adding ! performs uniq function destructively(b.uniq!)
+  
+  
+b = [1, 1, 2, 2, 3, 3, 4, 4]
+b.uniq
+=> [1, 2, 3, 4]
+b
+=> [1, 1, 2, 2, 3, 3, 4, 4]
+
+############################
+Iteration over array
+
+.select
+  - iterates over array
+  - returns new array that only include values that meet expression
+  - does not mutate caller
+  
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+numbers.select { |number| number > 4 }
+=> [5, 6, 7, 8, 9, 10]
+numbers
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+methods ending in ! often mutate the caller
+  there are methods that mutate (push, pop) that don't end in !
+
+Nested Arrays
+  you can have an array of arrays
+  you can have an array of hashes
+  
+Compare Arrays
+  you can compare them using ==
+
+.unshift ~ opposite of push. adds element to front instead of end of array
+.to_s
+  used behind string interpolation to print array to screen
+  Ruby uses string interpolation to make array print properly then adding to string
+
+#######################
+common array methods
+
+.include? ~ checks to see if given arguement is included in array
+  question marks at the end usually means the method will return a boolean
+
+I think predicates are methods that return booleans
+
+.flatten ~ takes a nested array and creates a one demensional array
+  not destructive
+  use ! to make changes permanent to original
+
+a = [1, 2, [3, 4, 5], [6, 7]]
+=> [1, 2, [3, 4, 5], [6, 7]]
+a.flatten
+=> [1, 2, 3, 4, 5, 6, 7]
+
+.each_index ~ iterates like each but the variable is the index not the value at each index
+  passes index into block to use as needed
+  original array is returned
+  
+.each_with_index ~ iterate with the value, and the index.
+  two params passed to block.
+  The first is the value
+  the second is the index
+
+.sort ~ returns a sorted array
+  not destructive
+  
+.product ~ returns a kinda factored combination of two arrays
+[1, 2, 3].product([4, 5])
+=> [[1, 4], [1, 5], [2, 4], [2, 5], [3, 4], [3, 5]]
+
+########################################
+each vs map
+
+.each
+  ~ iteration
+  ~ returns collection it was invoked on (unchanged)
+  ~ without a block it returns an Enumerator
+
+.map
+  ~ transformation
+  ~ creates and returns new array with the values returned from block
+  ~ without a block it returns an Enumerator
+ -------------------------- 
+irb :007 > a = [1, 2, 3]
+irb :008 > a.map { |x| x**2 }
+=> [1, 4, 9]
+
+squared each element and created a new array with the values
+-----------------------
+irb :009 > a = [1, 2, 3]
+irb :010 > a.map { |x| puts x**2 }
+=> [nil, nil, nil]
+
+puts returns nil so the array is an array of nil values
+--------------------------
+
+ANKI
