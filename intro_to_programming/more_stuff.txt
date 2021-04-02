@@ -1,0 +1,248 @@
+Regex - stands for regular expression
+  sequence of characters that form pattern matching rules
+  applies to string to look for matches
+  
+  check if the patter "ss" is in Missippi
+  
+  starts with forward slash
+  inside two forward slashes you put what you would like to match with the string
+  
+  use =~ to see if there is a match
+
+---------------------
+#finding b in powerball
+` w
+=> 5
+#5 means the first match is at the 5th index
+#5 is truethy so evaluates to true
+--------------------
+# boolean_regex.rb
+
+def has_a_b?(string)
+  if string =~ /b/
+    puts "We have a match!"
+  else
+    puts "No match here."
+  end
+end
+
+has_a_b?("basketball")
+has_a_b?("football")
+has_a_b?("hockey")
+has_a_b?("golf")
+------------------
+
+  can also use the .match method
+.match ~ returns MatchData object that describes the match or nil if no match
+
+-----------------
+/b/.match("powerball")
+=> #<MatchData "b">
+---------------
+# boolean_matchdata.rb
+
+def has_a_b?(string)
+  if /b/.match(string)
+    puts "We have a match!"
+  else
+    puts "No match here."
+  end
+end
+
+has_a_b?("basketball")
+has_a_b?("football")
+has_a_b?("hockey")
+has_a_b?("golf")
+-----------------------
+
+
+  String Matching problem  => think Regex
+
+#####################################################
+Ruby Standard Class
+
+  look in Ruby's standard classes
+    libararie like Math module
+  for solutions to specific operations
+  
+  use Ruby's built in libaries to solve problems instead of reinventing the wheel
+  
+Math.sqrt  ~ calculate the square root using Math module
+Math.sqrt(400) => 20
+
+Math::PI  ~ use pi constant from Rubys math module
+Math::PI
+=> 3.141592653589793
+
+Time.new(year,month,day)  ~ calculates the time using Ruby's built-in Time class
+t = Time.new(2008, 7, 4)
+=> 2008-07-04 00:00:00 -0400
+t.monday?
+=> false
+t.friday?
+=> true
+#used to find out what day of the week July 4th was in 2008
+
+###################################################
+Variables as Pointers
+
+a = "hi there"
+b = a
+a = "not here"
+# b in the above code?
+# b is "hi there"
+
+# because reassigning a to a new value this way
+# changes what location of memory it is pointing to
+# but b is still pointing to the old location
+
+a = "hi there"
+b = a
+a << ", Bob"
+# b in the above code?
+# b is "hi there, Bob"
+
+# because this way changes what value is stored at the location identified by a and thereby b
+
+  having the same value does not mean it is pointing to the same memory space
+  some operations mutate the address space in memory, but others simply change the variable to point to a different address space.
+  
+  copies that occupy different address space in memory.
+  
+  assigning a value with = creates a new memory space for the value
+
+--------------------
+a = [1, 2, 3, 3]
+b = a
+c = a.uniq
+
+a = [1, 2, 3, 3]
+b = a
+c = a.uniq!
+---------------------
+def test(b)
+  b.map {|letter| "I like the letter: #{letter}"}
+end
+
+a = ['a', 'b', 'c']
+test(a)
+
+using map! instead of map would change the values of the array we are passing in instead of working with a copy
+
+#######################################
+Blocks and Procs
+
+'''''''''''''''''''''''''''''''''
+Blocks
+  blocks like parameters can be passed into methods
+
+----------------------------
+def take_block(&block)
+  block.call
+end
+
+take_block do
+  puts "Block being called in the method!"
+end
+-------------------------------
+  & in the method definition tells us that the arguement is a block
+  blocks must be the last arguement in the method definition
+  
+-----------------------------------
+# passing_block.rb
+
+def take_block(number, &block)
+  block.call(number)
+end
+
+number = 42
+take_block(number) do |num|
+  puts "Block being called in the method! #{num}"
+end
+-----------------------------------------
+  pass the number into the take_block method and use it in block.call
+  can pass in a block using do/end
+  
+array.each {|num| puts "num"}
+  this is passing the block {|num| puts "num"} to the method .each which has a point that it calls the block and executes it
+  .each on an array is also expecting one value in pipes
+  
+''''''''''''''''''''''''''''''''''''''''''''''''
+Procs are blocks wrapped into a proc object
+  defined with Proc.new {stuff with block}
+  can be defined to take arguements
+  biggest thing is reusing code without retyping it
+ 
+------------------------------------ 
+# proc_example.rb
+
+talk = Proc.new do |name|
+  puts "I am talking to #{name}"
+end
+
+talk.call "Bob"
+-------------------------------------
+
+###################################################
+Exception Handling
+  dealing with error messages
+  good for interacting with the real world, unpredictability
+  
+  begin, rescue, end
+
+
+  
+# syntax to writing an exception structure
+-----------------------------------
+# exception_example.rb
+
+begin
+  # perform some dangerous operation
+rescue
+  # do this if operation fails
+  # for example, log the error
+end
+
+names = ['bob', 'joe', 'steve', nil, 'frank']
+
+names.each do |name|
+  begin
+    puts "#{name}'s name has #{name.length} letters in it."
+  rescue
+    puts "Something went wrong!"
+  end
+end
+-------------------------------------
+
+  can also write inline code
+------------------------------------
+zero = 0
+puts "Before each call"
+zero.each { |element| puts element } rescue puts "Can't do that!"
+puts "After each call"c
+
+=>
+Before each call
+Can't do that!
+After each call
+---------------------------------
+
+can't use .each on the integer zero
+without the rescue the program would end with error and After each call wouldn't be printed
+as you are writing code you can anticipate the errors and handled them so the whole program isn't broken by one error
+
+##############################################################
+Exceptions & Stack Traces
+
+for this section Exception = Error
+
+exceptions > lots of text
+
+TypeError ~ two types don't match
+  ruby has other built in exceptions with attached messages
+  stack trace includes
+    locations of errors (line #s) and types
+    includes names of methods called
+  helps trace execution flow
+  
+ANKI
