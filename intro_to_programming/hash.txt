@@ -1,0 +1,133 @@
+Hashes store items using keys
+Arrays store items in an ordered index
+
+Hashes
+~ uses symbols as keys
+~ any data type for values
+~ hashes surrounded by {}
+~ separated by commas
+
+~ older syntax
+old_syntax_hash = {:name => 'bob'}
+
+~ new syntax (Ruby 1.9)
+new_hash = {name: 'bob'}
+
+both return
+=> {:name=>'bob'}
+
+~ adding to a hash
+person[:hair] = 'brown'
+
+~ remove from a hash
+person.delete(:age)
+
+~ getting information from a hash
+person[:weight]
+=> "160 lbs"
+
+~ merge two hashes
+person.merge!(new_hash)
+  ~ the bang suffix (!) made the changes destructive
+  ~ leaving off the ! would have returned a new merged hash leaving the original unmodified
+  
+#####################
+Iterating over hashes
+~ assign variable to key and value
+
+# creating iterating_over_hashes.rb
+
+##########################
+Hashes as optional params
+~ you can use a hash to accept optional params
+
+# creating optional_parameters.rb
+
+~ using a hash allows you to have parameters not grouped under the same var so you can have an age and a city
+
+.empty? ~ checks if a hash has any key value pairs
+
+--------------
+# setting a method to have a hash to contain optional parameters
+def greeting(name, options = {})
+  if options.empty?
+    print "" #something if the hash is empty
+  else
+    print "" #printing something else with the other variables
+  end
+end
+
+#calling the method without any optional_parameters
+greeting("Bob")
+# calling greeting with a hash containing the optional_parameters
+greeting("Bob", {age: 62, city: "New York City"})
+
+#or
+
+greeting("Bob", age: 62, city: "New York City")
+
+#note that you didn't have to contain the hash values in {}
+
+##########################
+Hashes vs Arrays
+
+Hashes
+  - data comes with a label (name: bob)
+
+Arrays
+  - ordered items (order of cars finishing)
+  - stack or queue structure > "first in first out" or "last in first out" stacks
+  
+Hash keys
+  - symbols most common hash allows you to use new data structure
+  - other data types can be used as keys
+    - string, array, integer, float
+    - hashes can be used as keys
+{{key: "key"} => "hash as a key"}  # hash as key
+  - forced to use old style when using other data types
+  
+##########################
+common hash methods
+
+.has_key? ~ checks if hash contains a specific key, returns boolean
+.select   ~ pass a block and returns any key value pairs that evaluate true
+.fetch    ~ allows you to pass a key and return the value if key exits
+          ~ can provide a value to return if key value pair doesn't exist
+
+name_and_age.fetch("Steve")
+name_and_age.fetch("Larry", "Larry isn't in this hash")
+
+.to_a ~ changes hash to a multi dimensional array, not permanent
+
+name_and_age.to_a
+=> [["Bob", 42], ["Steve", 31], ["Joe", 19]]
+
+.keys ~ returns all of the keys of the hash in an array
+.values ~ returns all of the values of the hash in an array
+
+#######
+exercises
+
+#2
+
+merge
+  - used to combine two hashes
+  - returns a new hash, not destructive
+  - adding a block deals with when there is a duplicate key between the hashes
+    - values to define in block are |key, oldval, newval
+    - changes hsh by adding any new entries and overwriting duplicates with other_hash 
+  - using an ! makes this method destructive
+    - changes hsh by adding any new entries and overwriting duplicates with other_hash
+    - using block, same as above
+    
+merge(other_hash) → new_hash
+merge(other_hash){|key, oldval, newval| block} → new_hash
+
+h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+h1.merge(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+h1.merge(h2){|key, oldval, newval| newval - oldval}
+               #=> {"a"=>100, "b"=>54,  "c"=>300}
+h1             #=> {"a"=>100, "b"=>200}
+
+ANKI
