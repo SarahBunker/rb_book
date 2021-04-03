@@ -104,6 +104,13 @@ h.each do |key,value|
 end
 p h
 
+=begin
+Solution
+could have used the delet_if method
+h.delete_if { |k, v| v < 3.5 }
+
+=end
+
 ########################
 puts ""
 puts "Problem 10"
@@ -171,6 +178,19 @@ end
 
 p contacts
 
+=begin
+Solution
+contacts["Joe Smith"][:email] = contact_data[0][0]
+contacts["Joe Smith"][:address] = contact_data[0][1]
+contacts["Joe Smith"][:phone] = contact_data[0][2]
+contacts["Sally Johnson"][:email] = contact_data[1][0]
+contacts["Sally Johnson"][:address] = contact_data[1][1]
+contacts["Sally Johnson"][:phone] = contact_data[1][2]
+
+Mine has more lines of code, but that includes 2 lines for the iterator, as well as an end statement
+overall I think it is a vast improvement
+=end
+
 ########################
 puts ""
 puts "Problem 12"
@@ -194,6 +214,12 @@ arr = ['snow', 'winter', 'ice', 'slippery', 'salted roads', 'white trees']
 arr.delete_if {|string| string.to_s.start_with?("s") || string.to_s.start_with?("w")}
 p arr
 
+=begin
+Solution
+arr.delete_if { |word| word.start_with?("s", "w") }
+you can give multiple values to start_with?
+=end
+
 ########################
 puts ""
 puts "Problem 14"
@@ -207,6 +233,15 @@ a = ['white snow', 'winter wonderland', 'melting ice',
 a.map! {|string| string.split(" ")}
 a.flatten!
 p a
+=begin
+Solution
+a = a.map { |pairs| pairs.split }
+a = a.flatten
+p a
+
+I did not need to give .split a splitting value because it defaults to whitespace
+
+=end
 
 ########################
 puts ""
@@ -225,6 +260,14 @@ puts "Yes they are equivalent? I would think it would check equvalancy by callin
 puts "I think if they have the same keys and those keys have the same values then the hashes will be the same,"
 puts "regardless of the order they are created or the syntax used to create them"
 
+=begin
+Solution
+yes they are the same
+
+I was correct.
+order doesn't matter in hashes, the key/values being the same is
+
+=end
 
 
 ########################
@@ -281,3 +324,40 @@ p contacts
 # and not only did I do it, but I did it without their hints and in 7 lines of code. SO EXCITED!!!!
 # I am also excited that I stopped checking my work after each problem after problem 4 so I could be suprised to know that my answer
 # was more robust then they asked for in problem 11 and be suprised when I had already solved the challenge problem.
+
+=begin
+Solution
+----------------
+contact_data = ["joe@email.com", "123 Main st.", "555-123-4567"]
+contacts = {"Joe Smith" => {}}
+fields = [:email, :address, :phone]
+
+contacts.each do |name, hash|
+  fields.each do |field|
+    hash[field] = contact_data.shift
+  end
+end
+---------
+and for bonus
+-------------
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+fields = [:email, :address, :phone]
+
+contacts.each_with_index do |(name, hash), idx|
+  fields.each do |field|
+    hash[field] = contact_data[idx].shift
+  end
+end
+-------------
+
+ok so hard coding which person I was talking about was not the best solution. I could have done another .each iterato
+they also solved the index problem by using .each_with_index
+
+they didn't have to hardcode the names
+they didn't have to hardcode the [0] and [1]
+and they didn't have to use an interator to keep track of the array index
+=end
+
+#ANKI
